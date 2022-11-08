@@ -6,83 +6,65 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:06:48 by rsantos           #+#    #+#             */
-/*   Updated: 2022/11/01 17:06:49 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:25:55 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_substr(char const *s, size_t start, size_t len)
+int	change(char *buffer)
 {
-	size_t	i;
-	char	*str;
+	int	i;
+	int	j;
+	int	c;
 
 	i = 0;
-	if (len < ft_strlen((char *)s))
-		str = malloc((len + 1) * sizeof(char));
-	if (len >= ft_strlen((char *)s))
-		str = malloc((ft_strlen((char *)s) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (s[start] && i < len)
+	j = 0;
+	c = 0;
+	while (buffer[i])
 	{
-		str[i] = s[start];
-		i++;
-		start++;
+		if (c)
+			buffer[j++] = buffer[i];
+		if (buffer[i] == '\n')
+			c = 1;
+		buffer[i++] = 0;
 	}
-	str[i] = '\0';
-	return (str);
+	return (c);
 }
 
-size_t	ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
-	size_t	i;
-	i = -1;
-	if(!str)
-		return(0);
-	while (str[++i])
-		;
-	return (i);
-}
+	int	i;
 
-char	*ft_strdup(char *str)
-{
-	int		i;
-	int		len;
-	char	*dup;
-
-	len = 0;
-	i = -1;
-	while (str[len])
-		len++;
-	dup = malloc((len + 1) * sizeof(char));
-	if (!dup)
-		return (NULL);
-	while (str[++i])
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i + (str[i] == '\n'));
 }
 
 char	*ft_strjoin(char *str1, char *str2)
 {
 	int		i;
-	int		j;
-	int		size1;
-	int		size2;
 	char	*newstr;
 
-	i = -1;
-	j = -1;
-	size1 = ft_strlen(str1);
-	size2 = ft_strlen(str2);
-	newstr = malloc((size1 + size2 + 1) * sizeof(char));
+	i = 0;
+	newstr = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
 	if (!newstr)
 		return (NULL);
-	while (str1[++i])
+	while (str1 && str1[i])
+	{
 		newstr[i] = str1[i];
-	while (str2[++j])
-		newstr[i + j] = str2[j];
-	newstr[i + j] = '\0';
+		i++;
+	}
+	free(str1);
+	while (*str2)
+	{	
+		newstr[i++] = *str2;
+		if (*str2++ == '\n')
+			break ;
+	}
+	newstr[i] = '\0';
 	return (newstr);
 }

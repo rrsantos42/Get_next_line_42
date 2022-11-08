@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:21:00 by rsantos           #+#    #+#             */
-/*   Updated: 2022/11/01 17:07:09 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:23:29 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *str1, char *str2);
-int	    change(char *buffer);
+int		change(char *buffer);
 
 #endif

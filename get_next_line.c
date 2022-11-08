@@ -6,12 +6,11 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/10/11 21:29:04 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:23:02 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*get_next_line(int fd)
 {	
@@ -21,7 +20,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= FOPEN_MAX)
 		return (NULL);
 	line = NULL;
-	while (buffer[0] ||read(fd, buffer, BUFFER_SIZE) > 0)
+	while (buffer[0] || read(fd, buffer, BUFFER_SIZE) > 0)
 	{
 		line = ft_strjoin(line, buffer);
 		if (change(buffer))
@@ -29,5 +28,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-

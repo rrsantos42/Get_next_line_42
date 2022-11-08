@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:05:36 by rsantos           #+#    #+#             */
-/*   Updated: 2022/11/01 17:07:20 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:25:10 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_substr(char const *s, size_t start, size_t len);
-char	*ft_strdup(char *str);
 char	*ft_strjoin(char *str1, char *str2);
-size_t	ft_strlen(char *str);
+int		change(char *buffer);
 
 #endif

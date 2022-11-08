@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:57:23 by rsantos           #+#    #+#             */
-/*   Updated: 2022/11/01 17:06:25 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:24:29 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	change(char *buffer)
 {
 	int	i;
 	int	j;
-	int c;
+	int	c;
 
 	i = 0;
 	j = 0;
@@ -28,7 +28,6 @@ int	change(char *buffer)
 		if (buffer[i] == '\n')
 			c = 1;
 		buffer[i++] = 0;
-
 	}
 	return (c);
 }
@@ -37,9 +36,8 @@ static int	ft_strlen(char *str)
 {
 	int	i;
 
-
 	if (!str)
-		return(0);
+		return (0);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;

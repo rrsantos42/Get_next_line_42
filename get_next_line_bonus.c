@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:05:29 by rsantos           #+#    #+#             */
-/*   Updated: 2022/11/01 17:13:14 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:24:53 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 char	*get_next_line(int fd)
 {	
-	char		*buffer;
-	static char	*saved[FOPEN_MAX];
+	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= FOPEN_MAX)
 		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	line = ft_read(fd, saved[fd], buffer);
-	free (buffer);
-	if (!line || !line[0])
-		return (NULL);
-	saved[fd] = ft_saved(line);
+	line = NULL;
+	while (buffer[0] || read(fd, buffer[fd], BUFFER_SIZE) > 0)
+	{
+		line = ft_strjoin(line, buffer[fd]);
+		if (change(buffer[fd]))
+			break ;
+	}
 	return (line);
 }
